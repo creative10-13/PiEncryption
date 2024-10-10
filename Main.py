@@ -12,7 +12,7 @@ def encode(msg, key):
         exit()
     # Convert's key into an undecodeble key
     rkey = ""
-    for i in str(key):
+    for i in list(str(key)):
         rkey = rkey + pi[int(i)]
     rkey = int(rkey)
     print(rkey)
@@ -50,7 +50,7 @@ def decode(msg, key):
         exit()
 
     rkey = ""
-    for i in key:
+    for i in list(str(key)):
         rkey = rkey + pi[int(i)]
     rkey = int(rkey)
     print(rkey)
