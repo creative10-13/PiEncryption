@@ -6,6 +6,8 @@ pi = "31415926535897932384626433832795028841971693993751058209749445923078164062
 
 letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", ".", " ", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
+sys.sett_int_max|_
+
 def Ip(Q): return int(pi[Q])
 def encode(msg, key):
 
@@ -91,5 +93,5 @@ def Run():
     elif inp == 2:
         outmsg = input("Message to decode: ")
         outkey = input("Key to decode: ")
-        print("Decoded Message"+decode(outmsg,outkey))
+        decode(outmsg,outkey)
     
