@@ -63,7 +63,7 @@ def decode(msg, key):
         else:
             decodedlettersnum.append(str(Ip(a))+str(Ip(a+1)))
         if int(pi[a]) == 0:
-            a += int(str(i**int(rkey))[:1])
+            a += int(str(Ip(i)**int(rkey))[:1])
         else:
             a += int(pi[a])
 
