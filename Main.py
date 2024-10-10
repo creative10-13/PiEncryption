@@ -72,6 +72,8 @@ def decode(msg, key):
         decodedmsg += letters[decodedlettersnum.index(msg[i:i+2])]
     print("Decoded Message:", decodedmsg)
 
+def v(): print("Version 1.1")
+
 print("Choose an option: 1. Encode 2. Decode")
 try:
     inp = int(input())
