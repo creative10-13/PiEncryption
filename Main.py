@@ -68,27 +68,28 @@ def decode(msg, key):
     print(decodedlettersnum)
 
     decodedmsg = ""
-    for i in range(0,len(msg),2):
-        decodedmsg += letters[decodedlettersnum.index(msg[i:i+2])]
+    for i in range(0,len(str(msg)),2):
+        decodedmsg += letters[decodedlettersnum.index(str(msg)[i:i+2])]
     print("Decoded Message:", decodedmsg)
 
 def v(): print("Version 1.1") # Version Printer
 # In built encoding interface
-v()
-print("Choose an option: 1. Encode 2. Decode")
-try:
-    inp = int(input())
-except ValueError:
-    print("Invalid option")
-    exit()
+def Run():
+    v()
+    print("Choose an option: 1. Encode 2. Decode")
+    try:
+        inp = int(input())
+    except ValueError:
+        print("Invalid option")
+        exit()
 
-if inp == 1:
-    print("The message can only contain letters, numbers, spaces, and periods. All letters will be lowercased")
-    inmsg = input("Message to encode: ")
-    inkey = input("Key to encode: ")
-    encode(inmsg, inkey)
-elif inp == 2:
-    outmsg = input("Message to decode: ")
-    outkey = input("Key to decode: ")
-    decode(outmsg,outkey)
+    if inp == 1:
+        print("The message can only contain letters, numbers, spaces, and periods. All letters will be lowercased")
+        inmsg = input("Message to encode: ")
+        inkey = input("Key to encode: ")
+        encode(inmsg, inkey)
+    elif inp == 2:
+        outmsg = input("Message to decode: ")
+        outkey = input("Key to decode: ")
+        decode(outmsg,outkey)
     
