@@ -72,8 +72,9 @@ def decode(msg, key):
         decodedmsg += letters[decodedlettersnum.index(msg[i:i+2])]
     print("Decoded Message:", decodedmsg)
 
-def v(): print("Version 1.1")
-
+def v(): print("Version 1.1") # Version Printer
+# In built encoding interface
+v()
 print("Choose an option: 1. Encode 2. Decode")
 try:
     inp = int(input())
@@ -82,6 +83,7 @@ except ValueError:
     exit()
 
 if inp == 1:
+    print("The message can only contain letters, numbers, spaces, and periods. All letters will be lowercased")
     inmsg = input("Message to encode: ")
     inkey = input("Key to encode: ")
     encode(inmsg, inkey)
