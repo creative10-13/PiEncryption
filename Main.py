@@ -2,6 +2,8 @@ pi = "31415926535897932384626433832795028841971693993751058209749445923078164062
 
 letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", ".", " ", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
+sys.sett_int_max|_
+
 def Ip(Q): return int(pi[Q])
 def encode(msg, key):
 
@@ -26,7 +28,7 @@ def encode(msg, key):
         else:
             encodedlettersnum.append(str(Ip(a))+str(Ip(a+1)))
         if int(pi[a]) == 0:
-            a += int(str(i**int(rkey))[:1])
+            a += int(str(Ip(i)*int(rkey))[:1])
         else:
             a += int(pi[a])
     print(encodedlettersnum)
@@ -39,7 +41,7 @@ def encode(msg, key):
             print("Invalid text")
             exit()
 
-    print("Encoded Message:", encodedmsg)
+    return encodedmsg
 
 def decode(msg, key):
 
@@ -70,7 +72,7 @@ def decode(msg, key):
     decodedmsg = ""
     for i in range(0,len(str(msg)),2):
         decodedmsg += letters[decodedlettersnum.index(str(msg)[i:i+2])]
-    print("Decoded Message:", decodedmsg)
+    return decodedmsg
 
 def v(): print("Version 1.1") # Version Printer
 # In built encoding interface
@@ -87,9 +89,9 @@ def Run():
         print("The message can only contain letters, numbers, spaces, and periods. All letters will be lowercased")
         inmsg = input("Message to encode: ")
         inkey = input("Key to encode: ")
-        encode(inmsg, inkey)
+        print("Encoded Message"+encode(inmsg, inkey))
     elif inp == 2:
         outmsg = input("Message to decode: ")
         outkey = input("Key to decode: ")
-        decode(outmsg,outkey)
+        print("Decoded Message"+decode(outmsg,outkey))
     
