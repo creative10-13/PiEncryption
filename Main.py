@@ -7,7 +7,7 @@ pi = "31415926535897932384626433832795028841971693993751058209749445923078164062
 letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", ".", " ", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
 def Ip(Q): return int(pi[Q])
-def encode(msg, key):
+def encode(msg:str, key:str):
 
     try:
         key = int(key)
@@ -43,7 +43,7 @@ def encode(msg, key):
 
     return encodedmsg
 
-def decode(msg, key):
+def decode(msg:str, key:str):
 
     try:
         key = int(key)
