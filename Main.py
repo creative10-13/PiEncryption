@@ -87,9 +87,9 @@ def Run():
         print("The message can only contain letters, numbers, spaces, and periods. All letters will be lowercased")
         inmsg = input("Message to encode: ")
         inkey = input("Key to encode: ")
-        print("Encoded Message"+encode(inmsg, inkey))
+        print("Encoded Message: "+encode(inmsg, inkey))
     elif inp == 2:
         outmsg = input("Message to decode: ")
         outkey = input("Key to decode: ")
-        decode(outmsg,outkey)
+        print("Decoded Message"+decode(outmsg,outkey))
     
