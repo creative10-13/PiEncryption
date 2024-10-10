@@ -14,4 +14,4 @@ Notice: Letters, Numbers, space, and periods are only supported currently
 All inputs must be a string
 - Encode(msg, key) : Returns the encoded message using the message with the key.
 - Decode(msg, key) : Returns the decoded message using the decoded message with the key
-- Run(): Runs the intergrated Encoder/Decoder
+- Run(): Runs the integrated Encoder/Decoder terminal interface program
