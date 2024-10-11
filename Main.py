@@ -6,6 +6,21 @@ pi = "31415926535897932384626433832795028841971693993751058209749445923078164062
 
 letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", ".", " ", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
+def createrealkey(key):
+    nkey = ""
+    for i in list(str(key)):
+        nkey = nkey + pi[int(i)]
+    return int(nkey)
+
+def createpattern(key):
+    lettersnum = []
+    a = Ip(key)
+    for i in range(len(letters)):
+        while str(Ip(a))+str(Ip(a+1)) in lettersnum:
+            a += 1
+        lettersnum.append(str(Ip(a))+str(Ip(a+1)))
+    return lettersnum
+
 def Ip(Q): return int(pi[Q])
 def encode(msg:str, key:str):
 
@@ -15,23 +30,11 @@ def encode(msg:str, key:str):
         print("Invalid key")
         exit()
     # Convert's key into an undecodeble key
-    rkey = ""
-    for i in list(str(key)):
-        rkey = rkey + pi[int(i)]
-    rkey = int(rkey)
+    rkey = createrealkey(key)
     
     # Creates a encryption pattern from the key using pi
-    encodedlettersnum = []
-    a = Ip(rkey)
-    for i in range(len(letters)):
-        if str(Ip(a))+str(Ip(a+1)) in encodedlettersnum:
-            a += int(str(i**int(rkey))[:1])
-        else:
-            encodedlettersnum.append(str(Ip(a))+str(Ip(a+1)))
-        if int(pi[a]) == 0:
-            a += int(str(Ip(i)*int(rkey))[:1])
-        else:
-            a += int(pi[a])
+    encodedlettersnum = createpattern(rkey)
+    
     # Used the encryption pattern to encrypt the message
     encodedmsg = ""
     for i in list(msg.lower()):
@@ -50,22 +53,11 @@ def decode(msg:str, key:str):
     except ValueError:
         print("Invalid key")
         exit()
-
-    rkey = ""
-    for i in list(str(key)):
-        rkey = rkey + pi[int(i)]
-    rkey = int(rkey)
-    decodedlettersnum = []
-    a = Ip(rkey)
-    for i in range(len(letters)):
-        if str(Ip(a))+str(Ip(a+1)) in decodedlettersnum:
-            a += int(str(i**int(rkey))[:1])
-        else:
-            decodedlettersnum.append(str(Ip(a))+str(Ip(a+1)))
-        if int(pi[a]) == 0:
-            a += int(str(Ip(i)**int(rkey))[:1])
-        else:
-            a += int(pi[a])
+    # Convert's key into an undecodeble key
+    rkey = createrealkey(key)
+    
+    # Creates a encryption pattern from the key using pi
+    decodedlettersnum = createpattern(rkey)
 
     decodedmsg = ""
     for i in range(0,len(str(msg)),2):
@@ -91,5 +83,5 @@ def Run():
     elif inp == 2:
         outmsg = input("Message to decode: ")
         outkey = input("Key to decode: ")
-        print("Decoded Message"+decode(outmsg,outkey))
+        print("Decoded Message: "+decode(outmsg,outkey))
     
