@@ -6,22 +6,35 @@ pi = "31415926535897932384626433832795028841971693993751058209749445923078164062
 
 letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", ".", " ", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
+def collatz(n):
+    if n == 1:
+        return 1
+    elif n % 2 == 0:
+        return collatz(n // 2)
+    else:
+        return collatz(3 * n + 1)
+
+def Ip(Q):
+    return int(pi[Q])
+
 def createrealkey(key):
     nkey = ""
     for i in list(str(key)):
-        nkey = nkey + pi[int(i)]
+        nkey = nkey + str(collatz(int(i)))
     return int(nkey)
 
 def createpattern(key):
     lettersnum = []
     a = Ip(key)
     for i in range(len(letters)):
-        while str(Ip(a))+str(Ip(a+1)) in lettersnum:
-            a += 1
+        while pi[a]+pi[a+1] in lettersnum:
+            if str(a+1)[-1] == "0":
+                a += 2
+            else:
+                a += 1
         lettersnum.append(str(Ip(a))+str(Ip(a+1)))
     return lettersnum
 
-def Ip(Q): return int(pi[Q])
 def encode(msg:str, key:str):
 
     try:
@@ -64,7 +77,7 @@ def decode(msg:str, key:str):
         decodedmsg += letters[decodedlettersnum.index(str(msg)[i:i+2])]
     return decodedmsg
 
-def v(): print("Version 2") # Version Printer
+def v(): print("Version 3") # Version Printer
 # In built encoding interface
 def Run():
     v()
