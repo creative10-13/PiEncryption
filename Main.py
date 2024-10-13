@@ -27,12 +27,12 @@ def createpattern(key):
     lettersnum = []
     a = Ip(key)
     for i in range(len(letters)):
-        while pi[a]+pi[a+1] in lettersnum:
+        while str(collatz(Ip(a)))[-1]+str(collatz(Ip(a+1)))[1] in lettersnum:
             if str(a+1)[-1] == "0":
                 a += 2
             else:
                 a += 1
-        lettersnum.append(str(Ip(a))+str(Ip(a+1)))
+        lettersnum.append(str(collatz(Ip(a)))[-1]+str(collatz(Ip(a+1)))[1])
     return lettersnum
 
 def encode(msg:str, key:str):
