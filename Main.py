@@ -8,11 +8,7 @@ def encode(message, key):
     Newlist = []
     for i in range(len(message)):
         binary = ""
-        print(range(len(message[i])))
-        print(key[i])
-        
         for foo in range(len(message[i])):
-            print(foo)
             if key[i][foo] == message[i][foo]:
                 binary += "1"
             else:
