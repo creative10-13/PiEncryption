@@ -3,11 +3,16 @@ def encode(message, key):
     ogkey = key
     while len(message) > len(key): key += ogkey
     if len(message) < len(key): key = key[:len(message)]
-    key = [format(ord(x), 'b') for x in key]
+    key = [format(ord(x), 'b').rjust(8) for x in key]
+    
     Newlist = []
-    for i in range(0, len(message)):
+    for i in range(len(message)):
         binary = ""
+        print(range(len(message[i])))
+        print(key[i])
+        
         for foo in range(len(message[i])):
+            print(foo)
             if key[i][foo] == message[i][foo]:
                 binary += "1"
             else:
@@ -25,7 +30,7 @@ def decode(message, key):
     if len(message) < len(key): key = key[:len(message)]
     key = [format(ord(x), 'b') for x in key]
     Newlist = []
-    for i in range(0, len(messagelist)):
+    for i in range(len(messagelist)):
         binary = ""
         for foo in range(len(messagelist[i])):
             if key[i][foo] == messagelist[i][foo]:
